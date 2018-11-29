@@ -2,37 +2,61 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../assets/style.css">
-  <title>Sizing Tracks in CSS Grid!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style.css">
+    <title>Sizing Tracks in CSS Grid!</title>
 </head>
 
 <body>
-  <div class="container">
-    <div class="item">1</div>
-    <div class="item">2</div>
-    <div class="item">3</div>
-    <div class="item">4</div>
-    <div class="item">5</div>
-    <div class="item">6</div>
-    <div class="item">7</div>
-    <div class="item">8</div>
-    <div class="item">9</div>
-    <div class="item">10</div>
-    <div class="item">11</div>
-    <div class="item">12</div>
-    <div class="item">13</div>
-    <div class="item">14</div>
-    <div class="item">15</div>
-  </div>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">this wide</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+        <div class="item">10</div>
+        <div class="item">11</div>
+        <div class="item">12</div>
+        <div class="item">13</div>
+        <div class="item">14</div>
+        <div class="item">15</div>
+    </div>
 
-  <style>
-    .container {
-      display: grid;
-      grid-gap: 20px;
-    }
-  </style>
+    <style>
+        .container {
+            display: grid;
+            grid-gap: 20px;
+            /* grid-template-columns: 200px 200px 1fr; */
+            /* grid-template-columns: 200px 1fr 1fr; */
+            /* grid-template-columns: 200px 2fr 1fr; */
+            /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+            /* grid-template-rows: 1fr 1fr 1fr 1fr; */
+            grid-template-columns: auto 1fr;
+
+        }
+    </style>
 </body>
 
 </html>
+<p>
+    When you use percentages to size your grid the tracks/gaps aren't included. So 'grid-template-columns: 50% 50%;' with 'grid-gap: 20px;' will actually be 100% plus 20px.
+</p>
+<p>
+    fr units(fractional) represent the amount of space left AFTER all the elements are laid out. So if you have one column set to 1fr it will take up whatever space is left or not accounted for. If you do two columns with an 1fr they will split the
+    amount left over. They aren't pixes, just porportions to how much free space is left.
+</p>
+<p>
+    If we do 'grid-template-columns: 200px 2fr 1fr;' then the second column will take up twice as much as the 1fr.
+</p>
+<p>
+    When it comes to rows this will not work by default. The default height of the element is whatever the height of it's child elements are. Whereas the default width is the width of the browser window. So if you want to use 'grid-template-rows:
+    1fr 1fr 1fr 1fr;' you would need to set the height of the element.
+</p>
+<p>
+    When you use the 'auto' with 'fr' it will make the 'auto' column the size of the content that is in it's elements. Whichever is the largest content in that column will set the width.
+</p>
